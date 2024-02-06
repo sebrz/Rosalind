@@ -18,28 +18,17 @@ def DNA2RNA (seq):
     translated_seq = seq.replace('T', 'U')
     return translated_seq
 
-def find_proteins (RNA_seq):
-    proteins = []
+def find_proteins (RNA_seq, proteins):
     for i in range(0, 3):
-        print(i)
-        candidate = ''
-        writing_prot_flag = 0
         for j in range(i, len(RNA_seq) - 2, 3):
-            #print(j)
-            if RNA2AAC[RNA_seq[j:j + 3]] != 'M' and writing_prot_flag == 0:
-                continue
-            elif RNA2AAC[RNA_seq[j:j + 3]] == 'M' and writing_prot_flag == 0:
-                candidate = 'M'
-                writing_prot_flag = 1
-                print(j, 'start', RNA_seq[j:j + 3])
-                continue
-            if RNA2AAC[RNA_seq[j:j + 3]] == 'Stop' and writing_prot_flag == 1:
-                proteins.append(candidate)
+            if RNA2AAC[RNA_seq[j:j + 3]] == 'M':
                 candidate = ''
-                writing_prot_flag = 0
-                print(j, 'stopped')
-                continue
-            candidate = candidate + RNA2AAC[RNA_seq[j:j + 3]]
+                for k in range(j, len(RNA_seq) - 2, 3):
+                    if RNA2AAC[RNA_seq[k:k + 3]] == 'Stop':
+                        if candidate not in proteins:
+                            proteins.append(candidate)
+                        break
+                    candidate = candidate + RNA2AAC[RNA_seq[k:k + 3]]
     return proteins
 
 
@@ -68,11 +57,10 @@ if __name__ == '__main__':
             continue
         seq = seq + line.strip()
     RNA_seq = DNA2RNA(seq) # Translating the sequence
-    print(RNA_seq)
-
-    print(find_proteins(RNA_seq))
+    proteins = []
+    find_proteins(RNA_seq, proteins)
     # Now do the reverse complement
     RNA_seq2 = DNA2RNA(reverse_complement(seq))
-    print(find_proteins(RNA_seq2))
-    print(RNA_seq, RNA_seq2)
+    find_proteins(RNA_seq2, proteins)
+    print(*proteins, sep = '\n')
 

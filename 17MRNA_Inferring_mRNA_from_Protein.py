@@ -4,7 +4,7 @@
 
 if __name__ == '__main__':
 
-    # Dictionary containing the possible codons for each aminoacid
+    # Dictionary containing the number of possible codons for each aminoacid
     Possible_Codons = {
         "F" : 2, "S" : 6, "Y" : 2, "Stop" : 3, "C" : 2, "W" : 1, "L" : 6,
         "P" : 4, "H" : 2, "Q" : 2, "R" : 6, "I" : 3, "M" : 1, "T" : 4,
