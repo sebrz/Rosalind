@@ -1,4 +1,6 @@
-# Given
+# Given a protein string P of length at most 1000aa
+# Return the total weight of P
+
 if __name__ == '__main__':
 
     aac_mass = {'A' : 71.03711, 'C' : 103.00919, 'D' : 115.02694, 'F' : 147.06841,
