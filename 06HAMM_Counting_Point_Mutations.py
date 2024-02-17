@@ -4,7 +4,7 @@
 def calc_hamm(seq1, seq2):
 
     hamm = 0
-    for i in range(len(seq1)-1):
+    for i in range(len(seq1)):
         if seq1[i] == seq2[i]:
             continue
         else:
