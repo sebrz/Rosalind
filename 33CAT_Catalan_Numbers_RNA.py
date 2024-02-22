@@ -17,3 +17,7 @@ if __name__ == '__main__':
             calc_cat = calc_cat + cat_numbers[k-1] * cat_numbers[i-k]
         cat_numbers.append(calc_cat)
     print(cat_numbers)
+
+# Consider that if iterating through the matchings, the only way that a matching can happen if we
+# start with i to j is if between i and j there are enough of each base to build base pairs
+# i.e. #A = #U, #C = #G
