@@ -1,6 +1,5 @@
 # Given a positive integer n <= 10000
 # Return the total number of subsets modulo 1,000,000
-import math
 
 if __name__ == '__main__':
 
