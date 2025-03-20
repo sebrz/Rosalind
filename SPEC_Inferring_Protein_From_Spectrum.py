@@ -11,7 +11,6 @@ if __name__ == '__main__':
         div_line = line.split()
         aac.append(div_line[0])
         mass.append(float(div_line[1]))
-    print(aac, mass)
 
     myfile = input('Enter file name: ')
     myfile = 'Data_files/' + myfile + '.txt'
